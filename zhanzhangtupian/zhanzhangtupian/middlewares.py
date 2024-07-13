@@ -8,7 +8,7 @@ from scrapy import signals
 # useful for handling different item types with a single interface
 from itemadapter import is_item, ItemAdapter
 
-
+# 这是爬虫中间件(Spider Middlewares)
 class ZhanzhangtupianSpiderMiddleware:
     # Not all methods need to be defined. If a method is not defined,
     # scrapy acts as if the spider middleware does not modify the
@@ -54,9 +54,10 @@ class ZhanzhangtupianSpiderMiddleware:
 
     def spider_opened(self, spider):
         spider.logger.info("Spider opened: %s" % spider.name)
-# 修改下载中间件
+# 修改"下载中间件"(DownloaderMiddleware)
 import random
 class ZhanzhangtupianDownloaderMiddleware:
+    # 随时更换
     user_agent_list = [
         'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36 OPR/26.0.1656.60',
         'Opera/8.0 (Windows NT 5.1; U; en)',
@@ -76,7 +77,7 @@ class ZhanzhangtupianDownloaderMiddleware:
         'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.84 Safari/535.11 SE 2.X MetaSr 1.0',
         'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; SV1; QQDownload 732; .NET4.0C; .NET4.0E; SE 2.X MetaSr 1.0) ',
     ]
-    # 代理IP列表
+    # 代理IP列表(随时更换)
     PROXY_http = ['58.233.226.36', '55.226.232.48', '15.206.207.123']
     PROXY_https = ['12.118.126.14', '170.74.77.256', '110.182.181.80']
     # 拦截请求
@@ -84,7 +85,7 @@ class ZhanzhangtupianDownloaderMiddleware:
         # UA伪装
         request.headers['User-Agent'] = random.choice(self.user_agent_list)
         return None
-
+    # 这个函数用作拦截响应(这里没用到)
     def process_response(self, request, response, spider):
         # Called with the response returned from the downloader.
 
