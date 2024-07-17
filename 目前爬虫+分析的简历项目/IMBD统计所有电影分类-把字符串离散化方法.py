@@ -5,11 +5,12 @@ from matplotlib import pyplot as plt
 from matplotlib import font_manager
 import pandas as pd
 import numpy as np
-
+# 设置的微软雅黑字体
 my_font = font_manager.FontProperties(fname='C:/Windows/Fonts/msyhl.ttc')
 
 # 设置Pandas以显示所有列
 pd.set_option('display.max_columns', None)
+# 导入文件
 file_path = '../Pandas用法/IMDB-Movie-Data.csv'
 df = pd.read_csv(file_path)
 
